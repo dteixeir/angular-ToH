@@ -1,10 +1,14 @@
+// 3rd Party Modules
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 
-import { HeroService } from './hero.service';
+// Services
+import { HeroService } from '../hero.service';
 
-import { Hero } from './hero';
+// Class Objects
+import { Hero } from '../hero';
+
 @Component({
   moduleId: module.id,
   selector: 'my-hero-detail',
@@ -30,6 +34,11 @@ export class HeroDetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  save(): void {
+    this.heroService.update(this.hero)
+      .then(() => this.goBack());
   }
 
 }
